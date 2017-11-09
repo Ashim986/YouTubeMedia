@@ -21,14 +21,29 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.barTintColor = UIColor.RGB(red: 230, green: 32, blue: 32)
+        navigationController?.navigationBar.barTintColor = UIColor(r: 230, g: 32, b: 31)
         navigationController?.navigationBar.isTranslucent = false
         titleLabel.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         navigationItem.titleView  = titleLabel
         collectionView?.backgroundColor = .white
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: cellID)
+        setupMenuBar()
         
     }
+    
+    let menuBar : MenuBar = {
+       let mb = MenuBar()
+        return mb
+    }()
+    
+    private func setupMenuBar() {
+        view.addSubview(menuBar)
+        collectionView?.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+        menuBar.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([menuBar.leftAnchor.constraint(equalTo: view.leftAnchor), menuBar.topAnchor.constraint(equalTo: view.topAnchor), menuBar.rightAnchor.constraint(equalTo: view.rightAnchor), menuBar.heightAnchor.constraint(equalToConstant: 50)])
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
@@ -36,7 +51,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
         return cell
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

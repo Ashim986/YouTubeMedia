@@ -21,11 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let layout = UICollectionViewFlowLayout()
         
         window?.rootViewController = UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
-        application.statusBarStyle = .lightContent
         
+        application.statusBarStyle = .lightContent
         let statusBarBackgroundView = UIView()
         statusBarBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        statusBarBackgroundView.backgroundColor = UIColor.RGB(red: 194, green: 31, blue: 31)
+        statusBarBackgroundView.backgroundColor = UIColor(r: 194, g: 31, b: 31)
         window?.addSubview(statusBarBackgroundView)
         NSLayoutConstraint.activate([statusBarBackgroundView.topAnchor.constraint(equalTo: (window?.topAnchor)!), statusBarBackgroundView.leftAnchor.constraint(equalTo: (window?.leftAnchor)!),statusBarBackgroundView.widthAnchor.constraint(equalTo: (window?.widthAnchor)!), statusBarBackgroundView.heightAnchor.constraint(equalToConstant: 20)])
         

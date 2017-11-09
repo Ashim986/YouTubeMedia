@@ -8,7 +8,21 @@
 
 import UIKit
 
-class VideoCell : UICollectionViewCell{
+class BaseCell: UICollectionViewCell {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    func setupViews(){
+        
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+class VideoCell : BaseCell{
     
     let thumbnailImageView : UIImageView = {
         let imageView = UIImageView()
@@ -21,7 +35,7 @@ class VideoCell : UICollectionViewCell{
     
     let saparatorView : UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.RGB(red: 220, green: 220, blue: 220)
+        view.backgroundColor = UIColor(r: 220, g: 220, b: 220)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -52,17 +66,12 @@ class VideoCell : UICollectionViewCell{
         return textView
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
-    func setupViews(){
+    override func setupViews(){
         addSubview(thumbnailImageView)
         addSubview(saparatorView)
         addSubview(userProfileImageView)
         addSubview(titleLabel)
         addSubview(subTitleTextView)
-        
         
         //        thumbnailImageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         // x,y, right , left
@@ -82,10 +91,4 @@ class VideoCell : UICollectionViewCell{
         
     }
     
-    
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
